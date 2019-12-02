@@ -1,0 +1,19 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: tortuga-planke
+  namespace: default
+  labels:
+    team: teampeon
+spec:
+  image: {{ image }}:{{ tag }}
+  port: 8080
+  ingresses:
+    - https://tortuga-planke.nais.preprod.local
+  liveness:
+    path: isAlive
+  readiness:
+    path: isReady
+  replicas:
+    min: 1
+    max: 1
