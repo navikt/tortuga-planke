@@ -14,12 +14,21 @@ buildscript {
 
 dependencies {
     compile(kotlin("stdlib"))
-    implementation("no.nav.opptjening:nais-support:19")
+    implementation("no.nav.opptjening:nais-support:f04696f")
 }
 
+val githubUser: String by project
+val githubPassword: String by project
+
 repositories {
+    maven {
+        credentials {
+            username = githubUser
+            password = githubPassword
+        }
+        setUrl("https://maven.pkg.github.com/navikt/tortuga-nais-support")
+    }
     mavenCentral()
-    maven("https://repo.adeo.no/repository/maven-releases/")
 }
 
 java {
