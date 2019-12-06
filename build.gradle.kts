@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val mainClass = "no.nav.opptjening-planke.AppKt"
+val mainClass = "no.nav.opptjening.planke.AppKt"
 
 plugins {
     kotlin("jvm") version "1.3.50"
