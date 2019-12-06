@@ -17,6 +17,8 @@ jobs:
           java-version: '11.x'
 
       # Build
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew test build
         env:
