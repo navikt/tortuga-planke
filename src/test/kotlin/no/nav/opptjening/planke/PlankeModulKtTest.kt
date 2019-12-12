@@ -10,14 +10,24 @@ import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 
 
-internal class PlankeEndpointKtTest {
+internal class PlankeModulKtTest {
     private val client = HttpClient.newHttpClient()
 
     private val LOCALHOST = "http://localhost:"
     private val DEFAULT_PORT = "8080"
     private val LIVENESS_ENDPOINT = "isAlive"
     private val READINESS_ENDPOINT = "isReady"
+    private val SKATTEOPPGJØR_HENDELSE_TOPIC = "/skatteoppgjorhendelse/topic"
     private val HTTP_OK = 200
+
+    @Test
+    fun ibla() {
+        val body = " {\"fnr\":\"12345678901\" ,\"year\":1970}"
+        val request = createPostRequest(SKATTEOPPGJØR_HENDELSE_TOPIC, body);
+        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+
+        assertEquals(HTTP_OK, response.statusCode())
+    }
 
     @Test
     fun isReady_endpoint_returns_200_OK_when_application_runs() {
@@ -35,6 +45,13 @@ internal class PlankeEndpointKtTest {
         assertEquals(HTTP_OK, response.statusCode())
     }
 
+    private fun createPostRequest(endpoint: String, body: String): HttpRequest {
+        return HttpRequest.newBuilder()
+            .header("Accept", "application/json")
+            .uri(URI.create("$LOCALHOST$DEFAULT_PORT/$endpoint"))
+            .POST(HttpRequest.BodyPublishers.ofString(body))
+            .build()
+    }
 
     private fun createGetRequest(endpoint: String): HttpRequest {
         return HttpRequest.newBuilder()

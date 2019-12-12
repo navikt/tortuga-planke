@@ -21,6 +21,7 @@ dependencies {
     compile(kotlin("stdlib"))
     compile(kotlin("reflect"))
 
+    compile("io.ktor:ktor-gson:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("io.ktor:ktor-metrics-micrometer:$ktorVersion")
 
