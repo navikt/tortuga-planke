@@ -75,18 +75,6 @@ tasks.withType<Test> {
     }
 }
 
-
-
-
-
-/*
-
-
-
-tasks.withType<Wrapper> {
-    gradleVersion = "5.6.4"
-}
-
 tasks.named<Jar>("jar") {
     baseName = "app"
 
@@ -102,6 +90,20 @@ tasks.named<Jar>("jar") {
         }
     }
 }
+
+
+
+
+
+/*
+
+
+
+tasks.withType<Wrapper> {
+    gradleVersion = "5.6.4"
+}
+
+
 
 tasks.named<KotlinCompile>("compileKotlin") {
     kotlinOptions.jvmTarget = "12"
