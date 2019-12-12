@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val mainClass = "no.nav.opptjening.planke.ApplicationKt"
+val ktorVersion = "1.2.4"
 
 plugins {
     kotlin("jvm") version "1.3.50"
@@ -14,26 +15,22 @@ buildscript {
 
 dependencies {
     compile(kotlin("stdlib"))
-    implementation("no.nav.opptjening:nais-support:f04696f")
+
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-metrics-micrometer:$ktorVersion")
+
 }
 
 val githubUser: String by project
 val githubPassword: String by project
 
 repositories {
-    maven {
-        credentials {
-            username = githubUser
-            password = githubPassword
-        }
-        setUrl("https://maven.pkg.github.com/navikt/tortuga-nais-support")
-    }
     mavenCentral()
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_12
+    targetCompatibility = JavaVersion.VERSION_12
 }
 
 tasks.named<Jar>("jar") {
@@ -53,12 +50,12 @@ tasks.named<Jar>("jar") {
 }
 
 tasks.named<KotlinCompile>("compileKotlin") {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "12"
 }
 
 
 tasks.named<KotlinCompile>("compileTestKotlin") {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "12"
 }
 
 tasks.withType<Test> {
