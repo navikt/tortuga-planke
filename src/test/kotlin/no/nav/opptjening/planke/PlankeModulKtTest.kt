@@ -47,7 +47,7 @@ internal class PlankeModulKtTest {
 
     private fun createPostRequest(endpoint: String, body: String): HttpRequest {
         return HttpRequest.newBuilder()
-            .header("Accept", "application/json")
+            .header("Content-Type", "application/json")
             .uri(URI.create("$LOCALHOST$DEFAULT_PORT/$endpoint"))
             .POST(HttpRequest.BodyPublishers.ofString(body))
             .build()

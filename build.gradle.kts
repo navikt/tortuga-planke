@@ -20,8 +20,9 @@ buildscript {
 dependencies {
     compile(kotlin("stdlib"))
     compile(kotlin("reflect"))
-    compile("com.google.code.gson:gson:2.8.6")
 
+    implementation("io.ktor:ktor-jackson:$ktorVersion")
+    implementation("io.ktor:ktor-auth:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("io.ktor:ktor-metrics-micrometer:$ktorVersion")
 
