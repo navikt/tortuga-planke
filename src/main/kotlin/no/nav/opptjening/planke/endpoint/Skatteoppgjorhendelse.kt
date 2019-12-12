@@ -1,3 +1,3 @@
-package no.nav.opptjening.planke.instanse
+package no.nav.opptjening.planke.endpoint
 
 data class Skatteoppgjorhendelse(var fnr: String, var year: Int)

@@ -1,4 +1,4 @@
-package no.nav.opptjening.planke
+package no.nav.opptjening.planke.endpoint
 
 import io.ktor.application.call
 import io.ktor.http.ContentType

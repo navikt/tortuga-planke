@@ -19,5 +19,4 @@ class App(serverPort: Int = 8080) {
         connector { port = serverPort }
         module { plankeModul() }
     }
-
 }

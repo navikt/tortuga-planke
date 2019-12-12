@@ -1,4 +1,4 @@
-package no.nav.opptjening.planke
+package no.nav.opptjening.planke.unused
 
 import java.util.*
 
