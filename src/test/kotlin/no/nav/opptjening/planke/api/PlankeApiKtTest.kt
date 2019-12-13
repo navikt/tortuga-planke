@@ -1,6 +1,7 @@
-package no.nav.opptjening.planke
+package no.nav.opptjening.planke.api
 
 
+import no.nav.opptjening.planke.App
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -10,7 +11,7 @@ import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 
 
-internal class PlankeModulKtTest {
+internal class PlankeApiKtTest {
     private val client = HttpClient.newHttpClient()
 
     private val LOCALHOST = "http://localhost:"
@@ -21,7 +22,7 @@ internal class PlankeModulKtTest {
     private val HTTP_OK = 200
 
     @Test
-    fun ibla() {
+    fun addToSkatteoppgjorhendelseTopic_should_return_200_OK_when_event_is_added_to_kafka_topic() {
         val body = " {\"fnr\":\"12345678901\" ,\"year\":1970}"
         val request = createPostRequest(SKATTEOPPGJØR_HENDELSE_TOPIC, body);
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())

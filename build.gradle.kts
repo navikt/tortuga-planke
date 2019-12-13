@@ -5,6 +5,7 @@ val mainClass = "no.nav.opptjening.planke.ApplicationKt"
 val ktorVersion = "1.2.4"
 val junitJupiterVersion = "5.5.2"
 val javaVersion = "12"
+val confluentVersion: String = "5.0.0"
 
 plugins {
     kotlin("jvm") version "1.3.50"
@@ -92,27 +93,3 @@ tasks.named<Jar>("jar") {
         }
     }
 }
-
-
-
-
-
-/*
-
-
-
-tasks.withType<Wrapper> {
-    gradleVersion = "5.6.4"
-}
-
-
-
-tasks.named<KotlinCompile>("compileKotlin") {
-    kotlinOptions.jvmTarget = "12"
-}
-
-
-tasks.named<KotlinCompile>("compileTestKotlin") {
-    kotlinOptions.jvmTarget = "12"
-}
- */

@@ -1,7 +1,6 @@
-package no.nav.opptjening.planke.endpoint
+package no.nav.opptjening.planke.api
 
 import io.ktor.application.call
-import io.ktor.http.ContentType
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Routing
@@ -12,6 +11,5 @@ fun Routing.addToSkatteoppgjorhendelseTopic(topic: String) {
         var skatteoppgjorhendelse = call.receive<Skatteoppgjorhendelse>()
         call.respond(io.ktor.http.HttpStatusCode.OK, skatteoppgjorhendelse)
     }
-
 }
 

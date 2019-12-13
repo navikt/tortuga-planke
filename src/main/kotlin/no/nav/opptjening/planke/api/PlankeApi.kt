@@ -1,17 +1,12 @@
-package no.nav.opptjening.planke;
+package no.nav.opptjening.planke.api;
 
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.auth.Authentication
-import io.ktor.auth.authenticate
 import io.ktor.auth.basic
 import io.ktor.features.ContentNegotiation
 import io.ktor.jackson.jackson
-import io.ktor.routing.route
 import io.ktor.routing.routing
-import no.nav.opptjening.planke.endpoint.addToSkatteoppgjorhendelseTopic
-import no.nav.opptjening.planke.endpoint.isAlive
-import no.nav.opptjening.planke.endpoint.isReady
 
 internal val SKATTEOPPGJORHENDELSE_TOPIC = "privat-tortuga-skatteoppgjorhendelse"
 
