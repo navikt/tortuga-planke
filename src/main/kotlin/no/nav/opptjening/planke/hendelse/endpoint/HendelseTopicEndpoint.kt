@@ -14,7 +14,6 @@ object HendelseTopicEndpoint {
 
     private const val identLength = 11
     private const val periodeLength = 4
-    private const val earlyestPeriode = 2017
     private val ONLY_DIGITS: Regex = "^[0-9]*\$".toRegex()
 
     private fun addToTopic(hendelse: HendelseRequest) = with(HendelseProducer()) {
@@ -32,7 +31,7 @@ object HendelseTopicEndpoint {
     private fun isValidPeriode(periode: String): Boolean {
         return periode.length == periodeLength && periode.matches(
             ONLY_DIGITS
-        ) && Integer.parseInt(periode) >= earlyestPeriode
+        )
     }
 
     fun Routing.addToSkatteoppgjorhendelseTopic() =
@@ -44,7 +43,7 @@ object HendelseTopicEndpoint {
                 !isValidIdent(hendelse.ident) ->
                     BadRequest to """{ "error":"Ident should be FNR or DNR consisting of 11 digits" }"""
                 !isValidPeriode(hendelse.periode) ->
-                    BadRequest to """{ "error":"Periode should be a 4 digit year no earlier than 2017" }"""
+                    BadRequest to """{ "error":"Periode should be a 4 digit" }"""
                 else -> {
                     addToTopic(hendelse)
                     OK to hendelse
