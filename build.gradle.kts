@@ -1,4 +1,4 @@
-val mainClass = "no.nav.opptjening.planke.Application"
+val mainClass = "no.nav.opptjening.planke.ApplicationKt"
 val ktorVersion = "1.2.4"
 val junitJupiterVersion = "5.5.2"
 val javaVersion = "12"
