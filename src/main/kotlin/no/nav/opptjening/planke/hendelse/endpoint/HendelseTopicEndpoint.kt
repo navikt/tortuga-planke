@@ -1,6 +1,7 @@
 package no.nav.opptjening.planke.hendelse.endpoint
 
 import io.ktor.application.call
+import io.ktor.auth.authenticate
 import io.ktor.http.HttpStatusCode.Companion.BadRequest
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.request.receive
@@ -36,9 +37,8 @@ object HendelseTopicEndpoint {
         )
     }
 
-    fun Routing.addToSkatteoppgjorhendelseTopic() =
+    fun Routing.addToSkatteoppgjorhendelseTopic() = authenticate("basicAuth") {
         post("topic/skatteoppgjorhendelse") {
-
             val hendelse = call.receive<HendelseRequest>()
 
             when {
@@ -47,7 +47,7 @@ object HendelseTopicEndpoint {
                     BadRequest to """{ "error":"Ident should be FNR or DNR consisting of 11 digits" }"""
                 }
 
-                !isValidPeriode(hendelse.periode) ->{
+                !isValidPeriode(hendelse.periode) -> {
                     LOG.info("""Invalid periode in hendelse: $hendelse""")
                     BadRequest to """{ "error":"Periode should be a 4 digit" }"""
                 }
@@ -58,6 +58,7 @@ object HendelseTopicEndpoint {
                 }
             }.run { call.respond(first, second) }
         }
+    }
 }
 
 
