@@ -45,11 +45,11 @@ jobs:
         run: "docker push $(cat .docker_image):$(cat .docker_tag)"
 
       # Deploy
-      - name: Deploy to dev-fss
+      - name: Deploy to prod-fss
         uses: navikt/deployment-cli/action@0.4.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          cluster: dev-fss
+          cluster: prod-fss
           team: teampeon
-          resources: nais-dev.yaml
+          resources: nais-prod.yaml
