@@ -16,7 +16,7 @@ object HendelseTopicEndpoint {
 
     private const val identLength = 11
     private const val periodeLength = 4
-    private val LOG = LoggerFactory.getLogger(HendelseProducer::class.java)
+    private val LOG = LoggerFactory.getLogger(HendelseTopicEndpoint::class.java)
     private val ONLY_DIGITS: Regex = "^[0-9]*\$".toRegex()
 
     private fun addToTopic(hendelse: HendelseRequest) = with(HendelseProducer()) {

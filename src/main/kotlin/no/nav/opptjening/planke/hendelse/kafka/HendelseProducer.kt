@@ -69,9 +69,10 @@ class HendelseProducer {
                     )
                     shutdownSignal.signal()
                 } else {
-                    val offset: String =
-                        if (metadata.hasOffset()) "with offset: " + metadata.offset() else "without offset"
-                    LOG.trace("""Record sent ok, $offset  """)
+                    val offset: String = if (metadata.hasOffset()) "" + metadata.offset() else "Without offset!"
+                    val topic = metadata.topic()
+
+                    LOG.trace("""Record sent ok. topic: $topic offset: $offset """)
                 }
             }
         }
