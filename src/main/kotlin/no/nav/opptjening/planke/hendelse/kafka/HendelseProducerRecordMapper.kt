@@ -6,7 +6,8 @@ import org.apache.kafka.clients.producer.ProducerRecord
 
 
 fun mapToProducerRecord(topic: String, hendelse: Hendelse): ProducerRecord<HendelseKey, Hendelse> = ProducerRecord(
-    topic, HendelseKey.newBuilder()
+    topic,
+    HendelseKey.newBuilder()
         .setGjelderPeriode(hendelse.getGjelderPeriode())
         .setIdentifikator(hendelse.getIdentifikator())
         .build(),
