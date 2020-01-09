@@ -50,6 +50,7 @@ internal class AppTest {
         val request = createPostRequest(body)
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
 
+
         Assertions.assertEquals(httpOk, response.statusCode())
     }
 

@@ -5,6 +5,5 @@ import no.nav.opptjening.schema.skatt.hendelsesliste.Hendelse
 
 
 fun mapToHendelse(hendelse: HendelseRequest): Hendelse {
-    //TODO legg inn logikk for sekvensnummer
-    return Hendelse(0L, hendelse.ident, hendelse.periode)
+    return Hendelse(-1L, hendelse.ident, hendelse.periode)
 }

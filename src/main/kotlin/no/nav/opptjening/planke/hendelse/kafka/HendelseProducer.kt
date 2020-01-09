@@ -69,7 +69,9 @@ class HendelseProducer {
                     )
                     shutdownSignal.signal()
                 } else {
-                    LOG.trace("Record sent ok, persisting sekvensnummer = {}", record.value().getSekvensnummer())
+                    val offset: String =
+                        if (metadata.hasOffset()) "with offset: " + metadata.offset() else "without offset"
+                    LOG.trace("""Record sent ok, $offset  """)
                 }
             }
         }
