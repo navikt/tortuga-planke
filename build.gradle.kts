@@ -2,8 +2,8 @@ val mainClass = "no.nav.opptjening.planke.ApplicationKt"
 val ktorVersion = "1.2.4"
 val junitJupiterVersion = "5.5.2"
 val javaVersion = "12"
-val confluentVersion = "5.0.0"
-val kafkaVersion = "2.0.0"
+val confluentVersion = "5.3.0"
+val kafkaVersion = "2.3.0"
 
 plugins {
     `build-scan`
@@ -39,7 +39,7 @@ dependencies {
     testCompile("com.github.tomakehurst:wiremock-jre8:2.25.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-    testImplementation("no.nav:kafka-embedded-env:2.1.1"){
+    testImplementation("no.nav:kafka-embedded-env:2.3.0"){
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
     }
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
