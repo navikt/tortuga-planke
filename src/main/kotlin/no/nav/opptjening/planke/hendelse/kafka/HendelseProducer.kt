@@ -20,7 +20,7 @@ class HendelseProducer {
         this.shutdownSignal.addListener(shutdownListener())
     }
 
-    fun sendHendelser(hendelse: Hendelse) =
+    fun sendHendelser(hendelse: Hendelse) {
         mapToProducerRecord(topic, hendelse).also {
             LOG.trace("sending record:$it")
             producer.send(
@@ -30,7 +30,9 @@ class HendelseProducer {
                     shutdownSignal
                 )
             )
+            producer.close()
         }
+    }
 
     private fun shutdownListener(): Signaller.SignalListener {
         return Signaller.SignalListener()
