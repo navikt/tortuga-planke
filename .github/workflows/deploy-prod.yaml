@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  deploy-to-dev:
-    name: Deploy to dev-fss
+  deploy-to-prod:
+    name: Build, push and deploy to prod-fss
     runs-on: ubuntu-latest
     steps:
       # Checkout
