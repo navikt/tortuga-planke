@@ -22,6 +22,7 @@ class HendelseProducer {
 
     fun sendHendelser(hendelse: Hendelse) =
         mapToProducerRecord(topic, hendelse).also {
+            LOG.trace("sending record:$it")
             producer.send(
                 it,
                 ProducerCallback(

@@ -19,24 +19,6 @@ object HendelseTopicEndpoint {
     private val LOG = LoggerFactory.getLogger(HendelseTopicEndpoint::class.java)
     private val ONLY_DIGITS: Regex = "^[0-9]*\$".toRegex()
 
-    private fun addToTopic(hendelse: HendelseRequest) = with(HendelseProducer()) {
-        sendHendelser(mapToHendelse(hendelse))
-        shutdown()
-    }
-
-
-    private fun isValidIdent(ident: String): Boolean {
-        return ident.length == identLength && ident.matches(
-            ONLY_DIGITS
-        )
-    }
-
-    private fun isValidPeriode(periode: String): Boolean {
-        return periode.length == periodeLength && periode.matches(
-            ONLY_DIGITS
-        )
-    }
-
     fun Routing.addToSkatteoppgjorhendelseTopic() = authenticate("basicAuth") {
         post("topic/skatteoppgjorhendelse") {
             val hendelse = call.receive<HendelseRequest>()
@@ -58,6 +40,23 @@ object HendelseTopicEndpoint {
                 }
             }.run { call.respond(first, second) }
         }
+    }
+
+    private fun isValidIdent(ident: String): Boolean {
+        return ident.length == identLength && ident.matches(
+            ONLY_DIGITS
+        )
+    }
+
+    private fun isValidPeriode(periode: String): Boolean {
+        return periode.length == periodeLength && periode.matches(
+            ONLY_DIGITS
+        )
+    }
+
+    private fun addToTopic(hendelse: HendelseRequest) = with(HendelseProducer()) {
+        sendHendelser(mapToHendelse(hendelse))
+        shutdown()
     }
 }
 
