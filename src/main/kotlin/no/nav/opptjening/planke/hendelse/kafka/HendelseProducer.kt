@@ -21,17 +21,9 @@ class HendelseProducer {
     }
 
     fun sendHendelser(hendelse: Hendelse) {
-        mapToProducerRecord(topic, hendelse).also {
-            LOG.trace("sending record:$it")
-            producer.send(
-                it,
-                ProducerCallback(
-                    it,
-                    shutdownSignal
-                )
-            )
-            producer.close()
-        }
+        val record: ProducerRecord<HendelseKey, Hendelse> = mapToProducerRecord(topic, hendelse)
+        LOG.trace("sending record: $record")
+        producer.send(record, ProducerCallback(record, shutdownSignal))
     }
 
     private fun shutdownListener(): Signaller.SignalListener {
