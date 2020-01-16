@@ -193,7 +193,6 @@ internal class AppTest {
         internal fun tearDown() {
             kafkaEnvironment.tearDown()
             kafkaConsumer.close()
-            app.stop()
         }
     }
 }
