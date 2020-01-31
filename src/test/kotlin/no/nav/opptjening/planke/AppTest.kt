@@ -179,7 +179,7 @@ internal class AppTest {
                     ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to KafkaAvroDeserializer::class.java,
                     ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to KafkaAvroDeserializer::class.java,
                     KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG to true,
-                    ConsumerConfig.GROUP_ID_CONFIG to "loot-consumer-group",
+                    ConsumerConfig.GROUP_ID_CONFIG to "test-group",
                     ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG to false,
                     ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "earliest"
                 )
