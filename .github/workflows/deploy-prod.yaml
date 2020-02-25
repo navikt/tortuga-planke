@@ -46,10 +46,9 @@ jobs:
 
       # Deploy
       - name: Deploy to prod-fss
-        uses: navikt/deployment-cli/action@0.4.1
+        uses: nais/deploy/actions/deploy@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          cluster: prod-fss
-          team: teampeon
-          resources: nais-prod.yaml
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-fss
+          RESOURCE: nais-prod.yaml
+          IMAGE: ${{ env.IMAGE }}

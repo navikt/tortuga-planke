@@ -46,10 +46,9 @@ jobs:
 
       # Deploy
       - name: Deploy to dev-fss
-        uses: navikt/deployment-cli/action@0.4.1
+        uses: nais/deploy/actions/deploy@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          cluster: dev-fss
-          team: teampeon
-          resources: nais-dev.yaml
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-fss
+          RESOURCE: nais-dev.yaml
+          IMAGE: ${{ env.IMAGE }}

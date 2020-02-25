@@ -6,7 +6,7 @@ metadata:
   labels:
     team: teampeon
 spec:
-  image: {{ image }}:{{ tag }}
+  image: {{ image }}
   port: 8080
   ingresses:
     - https://tortuga-planke.nais.preprod.local
